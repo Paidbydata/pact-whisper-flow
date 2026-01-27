@@ -68,7 +68,7 @@ export const Step4Consent = () => {
           Alpha Consent Guardrails
         </h1>
         <p className="text-muted-foreground">
-          To proceed, we need explicit consent. No consent → no sponsorship. It's that simple.
+          To proceed, we need explicit consent.
         </p>
       </div>
 
@@ -78,7 +78,7 @@ export const Step4Consent = () => {
           id="consent-review"
           icon={<Eye className="w-5 h-5 text-primary" />}
           title="Manual Review"
-          description="I allow the PBD team to manually review my uploaded invoice to verify my Strava subscription."
+          description="I allow the PBD team to manually review my uploaded invoice. I confirm this is a real, unedited Strava receipt from 2026."
           checked={consent_review}
           onCheckedChange={setConsentReview}
         />
@@ -87,7 +87,7 @@ export const Step4Consent = () => {
           id="consent-sponsor"
           icon={<Shield className="w-5 h-5 text-primary" />}
           title="Sponsor Access"
-          description="I agree to share my verified status, name, and email with the sponsoring UK ice-bath brand so they can fulfill the sponsorship and send offers."
+          description="I agree to share my proof of payment, name, and email with the sponsoring UK ice-bath brand so they can fulfill the sponsorship and send offers."
           checked={consent_sponsor}
           onCheckedChange={setConsentSponsor}
         />
@@ -138,9 +138,20 @@ export const Step4Consent = () => {
             <div className="space-y-2">
               <h3 className="font-semibold text-golden text-sm">THE TL;DR (The Human Version)</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><span className="text-foreground font-medium">What we take:</span> Your name, email, and a verified image of your Strava receipt.</li>
-                <li><span className="text-foreground font-medium">What we do with it:</span> We look at it to make sure you're a real person paying for Strava. Then we tell Monk (our sponsor) that you're a verified athlete.</li>
+                <li><span className="text-foreground font-medium">What we take:</span> Your name, email, and a screenshot/PDF of your <span className="text-primary font-medium">2026 Strava receipt</span>.</li>
+                <li><span className="text-foreground font-medium">What we do with it:</span> We manually verify that a real human (you) is paying for a real subscription in the current year. Then we tell <span className="text-primary font-medium">Monk</span> (our sponsor) that you're a verified athlete worth talking to.</li>
                 <li><span className="text-foreground font-medium">What we never do:</span> We don't track your GPS routes, we don't look at your bank balance (please mask it!), and we never sell your data to random brokers.</li>
+              </ul>
+            </div>
+
+            {/* 2026 Integrity Policy */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-golden text-sm">THE 2026 INTEGRITY POLICY</h3>
+              <p className="text-sm text-muted-foreground mb-2">To prove data has <em>current</em> market value, we have a zero-tolerance policy for "Time Travelers" or "Photoshoppers":</p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><span className="text-foreground font-medium">Freshness Matters:</span> Only receipts dated <span className="text-primary font-medium">January 1, 2026, or later</span> are eligible for this £8.99 payout. 2025 is history; we're building the future.</li>
+                <li><span className="text-foreground font-medium">The Forgery Filter:</span> Our "Architects" (manual reviewers) are trained to spot edits. If you submit a doctored receipt, you'll be permanently blacklisted from all future PBD pilots. No hard feelings, we just value the truth.</li>
+                <li><span className="text-foreground font-medium">The "Oops" Clause:</span> Uploaded a 2025 receipt by mistake? We'll email you. You'll have 24 hours to upload a valid 2026 proof before we give your slot to the next person on the waitlist.</li>
               </ul>
             </div>
 
@@ -148,10 +159,10 @@ export const Step4Consent = () => {
             <div className="space-y-2">
               <h3 className="font-semibold text-golden text-sm">THE LEGAL MECHANICS (The GDPR Version)</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><span className="text-foreground font-medium">Lawful Basis:</span> We process your data based on Explicit Consent. You are choosing to enter this contract.</li>
-                <li><span className="text-foreground font-medium">Data Minimization:</span> We only collect the bare minimum. Once verified, your raw invoice is scheduled for deletion.</li>
-                <li><span className="text-foreground font-medium">Third Parties:</span> Monk (Sponsor) and Tremendous (Payout) only.</li>
-                <li><span className="text-foreground font-medium">Your Rights:</span> You are the boss. Email roy.morrison@paidbydata.com to access or delete your data within 30 days.</li>
+                <li><span className="text-foreground font-medium">Lawful Basis:</span> We process your data based on Explicit Consent. You are entering a specific value-exchange contract.</li>
+                <li><span className="text-foreground font-medium">Data Minimization:</span> We only collect what is strictly necessary to verify the payout. Once your 2026 receipt is verified and the payout is triggered, the raw image file is scheduled for deletion within 30 days.</li>
+                <li><span className="text-foreground font-medium">Third Parties:</span> We share your identity with two specific partners: <span className="text-foreground">Monk (Sponsor)</span> to fulfill the sponsorship, and <span className="text-foreground">Tremendous (Payout)</span> to ensure your £8.99 reaches you securely.</li>
+                <li><span className="text-foreground font-medium">Your Rights:</span> You are the boss. You can request a copy of your data or tell us to delete everything by emailing <span className="text-primary">roy.morrison@paidbydata.com</span>. Since this is an Alpha, we handle these requests manually within 30 days.</li>
               </ul>
             </div>
           </div>
