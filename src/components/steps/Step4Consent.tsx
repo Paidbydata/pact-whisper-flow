@@ -10,18 +10,20 @@ interface ConsentToggleProps {
   description: string;
   checked: boolean;
   onCheckedChange: (checked: boolean) => void;
+  id: string;
 }
 
-const ConsentToggle = ({ icon, title, description, checked, onCheckedChange }: ConsentToggleProps) => (
+const ConsentToggle = ({ icon, title, description, checked, onCheckedChange, id }: ConsentToggleProps) => (
   <div className={`consent-toggle ${checked ? 'consent-toggle-active' : ''}`}>
     <div className="flex-shrink-0 mt-1">
       {icon}
     </div>
-    <div className="flex-1 min-w-0">
+    <label htmlFor={id} className="flex-1 min-w-0 cursor-pointer">
       <p className="font-medium text-foreground text-sm">{title}</p>
       <p className="text-muted-foreground text-sm mt-1">{description}</p>
-    </div>
+    </label>
     <Switch 
+      id={id}
       checked={checked} 
       onCheckedChange={onCheckedChange}
       className="flex-shrink-0"
@@ -73,6 +75,7 @@ export const Step4Consent = () => {
       {/* Consent Toggles */}
       <div className="space-y-3">
         <ConsentToggle
+          id="consent-review"
           icon={<Eye className="w-5 h-5 text-primary" />}
           title="Manual Review"
           description="I allow the PBD team to manually review my uploaded invoice to verify my Strava subscription."
@@ -81,6 +84,7 @@ export const Step4Consent = () => {
         />
 
         <ConsentToggle
+          id="consent-sponsor"
           icon={<Shield className="w-5 h-5 text-primary" />}
           title="Sponsor Access"
           description="I agree to share my verified status, name, and email with the sponsoring UK ice-bath brand so they can fulfill the sponsorship and send offers."
@@ -89,6 +93,7 @@ export const Step4Consent = () => {
         />
 
         <ConsentToggle
+          id="consent-tremendous"
           icon={<Wallet className="w-5 h-5 text-primary" />}
           title="Payout Partner"
           description="I agree to share my details with Tremendous, our payout partner, to facilitate my £8.99 reward via Bank Transfer, Visa, or Gift Card."
@@ -97,6 +102,7 @@ export const Step4Consent = () => {
         />
 
         <ConsentToggle
+          id="consent-data-rights"
           icon={<FileText className="w-5 h-5 text-primary" />}
           title="Data Rights"
           description="I accept that in this Alpha, data deletion is processed manually via email within 30 days."
