@@ -123,7 +123,7 @@ export const Step2LeadCapture = () => {
       <div className="flex items-start gap-3 p-4 rounded-xl bg-golden/5 border border-golden/20">
         <AlertTriangle className="w-5 h-5 text-golden flex-shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground">
-          <span className="text-golden font-medium">Heads up:</span> Paid by Data works because brands pay to reach real people. Burner emails will fail verification.
+          <span className="text-golden font-medium">Heads up:</span> Paid by Data works because brands pay to reach real people. Fake emails will fail verification.
         </p>
       </div>
 

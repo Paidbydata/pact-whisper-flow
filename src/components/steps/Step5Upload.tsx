@@ -88,6 +88,14 @@ export const Step5Upload = () => {
         </p>
       </div>
 
+      {/* The Real Human Check */}
+      <div className="glass-card rounded-xl p-4 border-l-4 border-golden">
+        <p className="text-sm font-semibold text-golden mb-1">The 'Real Human' Check</p>
+        <p className="text-sm text-muted-foreground">
+          We only pay for the real deal. Your upload must be a valid Strava receipt from <span className="text-primary font-medium">2026</span>.
+        </p>
+      </div>
+
       {/* Upload Zone */}
       <div 
         className={`upload-zone ${isDragging ? 'upload-zone-active' : ''}`}
