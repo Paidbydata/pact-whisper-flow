@@ -3,6 +3,7 @@ import { useOnboardingStore } from '@/store/useOnboardingStore';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { CheckCircle2, Clock, ExternalLink, Share2, Snowflake, Star, Users } from 'lucide-react';
+import monkIceBath from '@/assets/monk-ice-bath.jpg';
 
 export const Step6Success = () => {
   const { 
@@ -63,24 +64,37 @@ Check it out: https://paidbydata.com/alpha`;
       </div>
 
       {/* Sponsor Reveal Card */}
-      <div className="glass-card rounded-2xl p-6 space-y-4 glow-effect">
-        <div className="flex items-center gap-3">
-          <div className="p-3 rounded-xl bg-primary/10">
-            <Snowflake className="w-6 h-6 text-primary" />
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Your Sponsor</p>
-            <p className="text-xl font-display font-bold text-gradient-primary">Monk</p>
-          </div>
+      <div className="glass-card rounded-2xl overflow-hidden glow-effect">
+        {/* Ice Bath Image */}
+        <div className="relative w-full aspect-[16/10] md:aspect-[16/8]">
+          <img 
+            src={monkIceBath} 
+            alt="Monk Ice Bath - Premium cold therapy equipment"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         </div>
-        
-        <div className="h-px bg-border/50" />
-        
-        <div className="space-y-2">
-          <p className="text-sm font-medium text-golden">Why Monk?</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Monk supports people who train consistently. Strava is used by athletes who track effort and recovery—the exact people Monk builds ice baths for. They are a UK-based cold therapy brand focused on recovery and resilience.
-          </p>
+
+        {/* Card Content */}
+        <div className="p-6 space-y-4 -mt-12 relative z-10">
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-primary/20 backdrop-blur-sm border border-primary/30">
+              <Snowflake className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">Your Sponsor</p>
+              <p className="text-xl font-display font-bold text-gradient-golden">Monk</p>
+            </div>
+          </div>
+          
+          <div className="h-px bg-border/50" />
+          
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-primary">Why Monk?</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Monk supports people who train consistently. Strava is used by athletes who track effort and recovery—the exact people Monk builds ice baths for. They are a UK-based cold therapy brand focused on recovery and resilience.
+            </p>
+          </div>
         </div>
       </div>
 
