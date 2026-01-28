@@ -64,11 +64,11 @@ export const WizardLayout = ({ children }: WizardLayoutProps) => {
         </div>
       </main>
 
-      {/* Ambient Glow Effect */}
+      {/* Ambient Glow Effect - Golden Hour */}
       <div 
         className="fixed inset-0 pointer-events-none z-0 opacity-30"
         style={{
-          background: 'radial-gradient(ellipse at 50% 0%, hsl(300 76% 72% / 0.08) 0%, transparent 50%)'
+          background: 'radial-gradient(ellipse at 50% 0%, hsl(43 75% 52% / 0.1) 0%, transparent 50%)'
         }}
       />
     </div>
