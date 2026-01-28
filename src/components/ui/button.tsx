@@ -10,19 +10,19 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]",
+          "bg-gradient-to-r from-[hsl(43_75%_52%)] to-[hsl(43_76%_36%)] text-[hsl(0_0%_10%)] shadow-lg hover:shadow-[0_0_20px_hsl(43_75%_52%_/_0.4)] hover:scale-[1.02] active:scale-[0.98]",
         destructive:
           "bg-destructive text-destructive-foreground shadow-md hover:bg-destructive/90",
         outline:
-          "border border-border bg-transparent hover:bg-muted hover:text-foreground",
+          "border border-primary/40 bg-transparent text-primary hover:bg-primary/10 hover:border-primary",
         secondary:
           "bg-secondary text-secondary-foreground shadow-md hover:bg-secondary/80",
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // PBD Custom Variants
-        hero: "bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] font-bold tracking-wide",
-        golden: "bg-accent text-accent-foreground shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] font-bold",
-        glass: "backdrop-blur-md bg-muted/30 border border-border/50 text-foreground hover:bg-muted/50 hover:border-border",
+        // PBD Custom Variants - Golden Hour
+        hero: "bg-gradient-to-r from-[hsl(45_80%_65%)] via-[hsl(43_75%_52%)] to-[hsl(43_76%_36%)] text-[hsl(0_0%_10%)] shadow-lg hover:shadow-[0_0_24px_hsl(43_75%_52%_/_0.5)] hover:scale-[1.02] active:scale-[0.98] font-bold tracking-wide",
+        golden: "bg-gradient-to-r from-[hsl(43_75%_52%)] to-[hsl(43_76%_36%)] text-[hsl(0_0%_10%)] shadow-lg hover:shadow-[0_0_20px_hsl(43_75%_52%_/_0.4)] hover:scale-[1.02] active:scale-[0.98] font-bold",
+        glass: "backdrop-blur-md bg-muted/30 border border-primary/30 text-foreground hover:bg-muted/50 hover:border-primary/50",
         muted: "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground",
       },
       size: {
