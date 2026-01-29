@@ -55,7 +55,7 @@ Check it out: https://paidbydata.com/alpha`;
       {/* Sponsor Reveal Card */}
       <div className="glass-card rounded-2xl overflow-hidden glow-effect">
         {/* Ice Bath Image */}
-        <div className="relative w-full aspect-[16/10] md:aspect-[16/8]">
+        <div className="relative w-full aspect-[4/3] md:aspect-[4/3]">
           <img
             src={monkIceBath}
             alt="Monk Ice Bath - Premium cold therapy equipment"
