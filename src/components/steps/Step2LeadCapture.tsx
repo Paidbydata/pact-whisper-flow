@@ -12,7 +12,6 @@ export const Step2LeadCapture = () => {
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
   const validateForm = () => {
-    return true;
     const newErrors: { name?: string; email?: string } = {};
 
     if (!user_name.trim()) {
@@ -62,15 +61,63 @@ export const Step2LeadCapture = () => {
       </div>
 
       {/* Form */}
-      <div className="space-y-5"></div>
+      <div className="space-y-5">
+        {/* Full Name */}
+        <div className="space-y-2">
+          <Label htmlFor="full-name" className="text-sm font-medium">
+            Full Name
+          </Label>
+          <div className="relative">
+            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Input
+              id="full-name"
+              type="text"
+              placeholder="Enter your full name"
+              value={user_name}
+              onChange={(e) => setUserName(e.target.value)}
+              className="pl-12 h-12 glass-input"
+            />
+          </div>
+          {errors.name && (
+            <p className="text-sm text-destructive">{errors.name}</p>
+          )}
+        </div>
 
-      {/* Warning */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-golden/5 border border-golden/20">
-        <AlertTriangle className="w-5 h-5 text-golden flex-shrink-0 mt-0.5" />
-        <p className="text-sm text-muted-foreground">
-          <span className="text-golden font-medium">Heads up:</span> Paid by Data works because brands pay to reach real
-          people. Fake emails will fail verification.
-        </p>
+        {/* Primary Email */}
+        <div className="space-y-2">
+          <Label htmlFor="email" className="text-sm font-medium">
+            Primary Email Address
+          </Label>
+          <div className="relative">
+            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Input
+              id="email"
+              type="email"
+              placeholder="Enter your primary email"
+              value={user_email}
+              onChange={(e) => setUserEmail(e.target.value)}
+              className="pl-12 h-12 glass-input"
+            />
+          </div>
+          {errors.email && (
+            <p className="text-sm text-destructive">{errors.email}</p>
+          )}
+        </div>
+      </div>
+
+      {/* High-Emphasis Warning Callout */}
+      <div className="glass-card rounded-xl p-4 border-l-4 border-golden">
+        <div className="flex items-start gap-3">
+          <AlertTriangle className="w-5 h-5 text-golden flex-shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <p className="text-sm font-medium text-foreground">
+              Paid by Data works because brands pay to reach real people.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Using a burner or fake email will fail verification.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* CTA */}
@@ -78,7 +125,7 @@ export const Step2LeadCapture = () => {
         {isLoading ? (
           <>
             <Loader2 className="w-5 h-5 animate-spin" />
-            Sending link...
+            Sending verification link…
           </>
         ) : (
           "Verify Email & Continue"

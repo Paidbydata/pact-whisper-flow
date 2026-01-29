@@ -13,27 +13,28 @@ export const Step3Verification = () => {
   } = useOnboardingStore();
   
   const [isChecking, setIsChecking] = useState(false);
-  const [checkAttempts, setCheckAttempts] = useState(0);
+  const [showReminder, setShowReminder] = useState(false);
 
   const handleRefresh = async () => {
     setIsChecking(true);
-    setCheckAttempts(prev => prev + 1);
     
     // Simulate checking verification status
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    // For demo: verify after first attempt
-    if (checkAttempts >= 0) {
-      setEmailVerified(true);
-    }
-    
     setIsChecking(false);
-  };
-
-  const handleContinue = () => {
-    if (email_verified) {
+    
+    // If not verified, show subtle reminder
+    if (!email_verified) {
+      setShowReminder(true);
+    } else {
       nextStep();
     }
+  };
+
+  // Hidden demo control to simulate verification
+  const handleSimulateVerification = () => {
+    setEmailVerified(true);
+    setShowReminder(false);
   };
 
   return (
@@ -51,23 +52,28 @@ export const Step3Verification = () => {
       <div className="space-y-2">
         <p className="text-sm text-primary font-medium">Step 3 of 6</p>
         <h1 className="text-2xl md:text-3xl font-display font-bold tracking-tight">
-          Check your inbox.
+          Check your inbox
         </h1>
       </div>
 
       {/* Email Icon Card */}
       <div className="glass-card rounded-2xl p-8 text-center space-y-6">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mx-auto">
+        {/* Animated Email Icon */}
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mx-auto relative">
           {email_verified ? (
-            <CheckCircle2 className="w-10 h-10 text-accent" />
+            <CheckCircle2 className="w-10 h-10 text-primary" />
           ) : (
-            <Mail className="w-10 h-10 text-primary animate-pulse-slow" />
+            <Mail className="w-10 h-10 text-primary animate-float" />
+          )}
+          {/* Glow ring animation */}
+          {!email_verified && (
+            <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping" />
           )}
         </div>
 
         {email_verified ? (
           <div className="space-y-2">
-            <p className="text-xl font-semibold text-accent">
+            <p className="text-xl font-semibold text-primary">
               Email verified! 🎉
             </p>
             <p className="text-muted-foreground">
@@ -75,25 +81,26 @@ export const Step3Verification = () => {
             </p>
           </div>
         ) : (
-          <div className="space-y-2">
-            <p className="text-lg">
+          <div className="space-y-4">
+            <p className="text-lg text-foreground">
               We sent a verification link to:
             </p>
             <p className="text-primary font-semibold text-lg break-all">
-              {user_email}
+              {user_email || 'your@email.com'}
+            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Click it to unlock the sponsorship dashboard.<br />
+              This protects sponsors from bots and protects you from spam.
             </p>
           </div>
         )}
       </div>
 
-      {/* Why Verify */}
-      {!email_verified && (
-        <div className="text-center space-y-2">
-          <p className="text-muted-foreground text-sm">
-            This protects sponsors from bots and you from spam.
-          </p>
-          <p className="text-muted-foreground text-sm">
-            Can't find it? Check your spam folder.
+      {/* Subtle Reminder */}
+      {showReminder && !email_verified && (
+        <div className="text-center p-4 rounded-xl bg-muted/30 border border-border/50">
+          <p className="text-sm text-muted-foreground">
+            Still waiting? Check your <span className="text-foreground font-medium">spam folder</span> or request a new link.
           </p>
         </div>
       )}
@@ -104,7 +111,7 @@ export const Step3Verification = () => {
           variant="hero" 
           size="lg" 
           className="w-full"
-          onClick={handleContinue}
+          onClick={nextStep}
         >
           Continue to Consent
         </Button>
@@ -130,10 +137,14 @@ export const Step3Verification = () => {
         </Button>
       )}
 
-      {/* Resend Option */}
-      {!email_verified && checkAttempts > 1 && (
-        <button className="w-full text-center text-sm text-primary hover:underline">
-          Didn't receive it? Resend verification email
+      {/* Hidden Demo Control - Only visible in development/testing */}
+      {!email_verified && (
+        <button
+          onClick={handleSimulateVerification}
+          className="w-full text-center text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors py-2"
+          title="Demo only: Simulate email verification"
+        >
+          [Demo] Simulate verification
         </button>
       )}
     </div>
