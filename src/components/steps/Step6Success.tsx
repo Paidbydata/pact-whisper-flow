@@ -1,20 +1,13 @@
-import { useState } from 'react';
-import { useOnboardingStore } from '@/store/useOnboardingStore';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { CheckCircle2, Clock, ExternalLink, Share2, Snowflake, Star, Users } from 'lucide-react';
-import monkIceBath from '@/assets/monk-ice-bath.jpg';
+import { useState } from "react";
+import { useOnboardingStore } from "@/store/useOnboardingStore";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { CheckCircle2, Clock, ExternalLink, Share2, Snowflake, Star, Users } from "lucide-react";
+import monkIceBath from "@/assets/monk-ice-bath.jpg";
 
 export const Step6Success = () => {
-  const { 
-    user_name,
-    rating, 
-    feedback,
-    setRating,
-    setFeedback,
-    submission_status,
-    resetOnboarding
-  } = useOnboardingStore();
+  const { user_name, rating, feedback, setRating, setFeedback, submission_status, resetOnboarding } =
+    useOnboardingStore();
 
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
@@ -28,7 +21,7 @@ Check it out: https://paidbydata.com/alpha`;
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Paid by Data Alpha',
+          title: "Paid by Data Alpha",
           text: shareText,
         });
       } catch (err) {
@@ -44,7 +37,7 @@ Check it out: https://paidbydata.com/alpha`;
     setFeedbackSubmitted(true);
   };
 
-  const firstName = user_name.split(' ')[0] || 'Architect';
+  const firstName = user_name.split(" ")[0] || "Architect";
 
   return (
     <div className="space-y-8 py-8">
@@ -53,24 +46,20 @@ Check it out: https://paidbydata.com/alpha`;
         <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 mb-2">
           <CheckCircle2 className="w-10 h-10 text-accent" />
         </div>
-        
-        <h1 className="text-2xl md:text-3xl font-display font-bold tracking-tight">
-          Evidence submitted.
-        </h1>
-        
-        <p className="text-lg text-muted-foreground">
-          Nice one, {firstName}. You're officially an architect.
-        </p>
+
+        <h1 className="text-2xl md:text-3xl font-display font-bold tracking-tight">Evidence submitted.</h1>
+
+        <p className="text-lg text-muted-foreground">Nice one, {firstName}. You're officially an architect.</p>
       </div>
 
       {/* Sponsor Reveal Card */}
       <div className="glass-card rounded-2xl overflow-hidden glow-effect">
         {/* Ice Bath Image */}
         <div className="relative w-full aspect-[16/10] md:aspect-[16/8]">
-          <img 
-            src={monkIceBath} 
+          <img
+            src={monkIceBath}
             alt="Monk Ice Bath - Premium cold therapy equipment"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         </div>
@@ -86,13 +75,15 @@ Check it out: https://paidbydata.com/alpha`;
               <p className="text-xl font-display font-bold text-gradient-golden">Monk</p>
             </div>
           </div>
-          
+
           <div className="h-px bg-border/50" />
-          
+
           <div className="space-y-2">
             <p className="text-sm font-medium text-primary">Why Monk?</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Monk supports people who train consistently. Strava is used by athletes who track effort and recovery—the exact people Monk builds ice baths for. They are a UK-based cold therapy brand focused on recovery and resilience.
+              Monk supports people who train consistently. Strava is used by athletes who track effort and recovery—the
+              exact people Monk builds ice baths for. They are a UK-based cold therapy brand focused on recovery and
+              resilience.
             </p>
           </div>
         </div>
@@ -118,23 +109,15 @@ Check it out: https://paidbydata.com/alpha`;
       {/* Feedback Section */}
       {!feedbackSubmitted ? (
         <div className="space-y-4">
-          <h2 className="text-lg font-display font-semibold">
-            What do you think of Paid by Data?
-          </h2>
-          
+          <h2 className="text-lg font-display font-semibold">What do you think of Paid by Data?</h2>
+
           {/* Star Rating */}
           <div className="star-rating justify-center">
             {[1, 2, 3, 4, 5].map((star) => (
-              <button
-                key={star}
-                onClick={() => setRating(star)}
-                className="p-1"
-              >
-                <Star 
+              <button key={star} onClick={() => setRating(star)} className="p-1">
+                <Star
                   className={`w-8 h-8 transition-colors ${
-                    star <= rating 
-                      ? 'fill-golden text-golden' 
-                      : 'text-muted-foreground hover:text-golden/50'
+                    star <= rating ? "fill-golden text-golden" : "text-muted-foreground hover:text-golden/50"
                   }`}
                 />
               </button>
@@ -149,12 +132,7 @@ Check it out: https://paidbydata.com/alpha`;
             className="glass-input min-h-[100px] resize-none"
           />
 
-          <Button 
-            variant="glass" 
-            className="w-full"
-            onClick={handleFeedbackSubmit}
-            disabled={rating === 0}
-          >
+          <Button variant="glass" className="w-full" onClick={handleFeedbackSubmit} disabled={rating === 0}>
             Submit Feedback
           </Button>
         </div>
@@ -171,30 +149,20 @@ Check it out: https://paidbydata.com/alpha`;
       <div className="space-y-4">
         <div className="flex items-center gap-3">
           <Users className="w-5 h-5 text-primary" />
-          <h2 className="text-lg font-display font-semibold">
-            Nominate a fellow architect.
-          </h2>
+          <h2 className="text-lg font-display font-semibold">Nominate a fellow architect.</h2>
         </div>
-        
+
         <p className="text-sm text-muted-foreground">
-          We're building this for people who actually move. Since slots are strictly limited to 100, we'd rather give them to people you know. Give a friend priority access to Pilot 0.2.
+          We're building this for people who actually move. Since slots are strictly limited to 100, we'd rather give
+          them to people you know. Give a friend priority access to Pilot 0.2.
         </p>
 
-        <Button 
-          variant="hero" 
-          size="lg" 
-          className="w-full"
-          onClick={handleShare}
-        >
+        <Button variant="hero" size="lg" className="w-full" onClick={handleShare}>
           <Share2 className="w-5 h-5" />
           Nominate a Friend
         </Button>
 
-        <Button 
-          variant="muted" 
-          className="w-full"
-          onClick={resetOnboarding}
-        >
+        <Button variant="muted" className="w-full" onClick={resetOnboarding}>
           Return to Dashboard
         </Button>
       </div>
