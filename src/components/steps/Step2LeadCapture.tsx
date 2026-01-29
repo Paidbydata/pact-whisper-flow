@@ -12,6 +12,7 @@ export const Step2LeadCapture = () => {
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
   const validateForm = () => {
+    return true;
     const newErrors: { name?: string; email?: string } = {};
 
     if (!user_name.trim()) {
