@@ -1,50 +1,43 @@
-import { useState } from 'react';
-import { useOnboardingStore } from '@/store/useOnboardingStore';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { AlertTriangle, ArrowLeft, Loader2, Mail, User } from 'lucide-react';
+import { useState } from "react";
+import { useOnboardingStore } from "@/store/useOnboardingStore";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { AlertTriangle, ArrowLeft, Loader2, Mail, User } from "lucide-react";
 
 export const Step2LeadCapture = () => {
-  const { 
-    user_name, 
-    user_email, 
-    setUserName, 
-    setUserEmail, 
-    nextStep,
-    prevStep 
-  } = useOnboardingStore();
-  
+  const { user_name, user_email, setUserName, setUserEmail, nextStep, prevStep } = useOnboardingStore();
+
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
   const validateForm = () => {
     const newErrors: { name?: string; email?: string } = {};
-    
+
     if (!user_name.trim()) {
-      newErrors.name = 'Please enter your full name';
-    } else if (user_name.trim().split(' ').length < 2) {
-      newErrors.name = 'Please enter your full name (first and last)';
+      newErrors.name = "Please enter your full name";
+    } else if (user_name.trim().split(" ").length < 2) {
+      newErrors.name = "Please enter your full name (first and last)";
     }
-    
+
     if (!user_email.trim()) {
-      newErrors.email = 'Please enter your email';
+      newErrors.email = "Please enter your email";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = "Please enter a valid email address";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async () => {
     if (!validateForm()) return;
-    
+
     setIsLoading(true);
-    
+
     // Simulate sending verification email
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     setIsLoading(false);
     nextStep();
   };
@@ -52,7 +45,7 @@ export const Step2LeadCapture = () => {
   return (
     <div className="space-y-8 py-8">
       {/* Back Button */}
-      <button 
+      <button
         onClick={prevStep}
         className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
       >
@@ -63,74 +56,26 @@ export const Step2LeadCapture = () => {
       {/* Header */}
       <div className="space-y-2">
         <p className="text-sm text-primary font-medium">Step 2 of 6</p>
-        <h1 className="text-2xl md:text-3xl font-display font-bold tracking-tight">
-          The Value Exchange
-        </h1>
-        <p className="text-muted-foreground">
-          Tell us who you are, and we'll verify you're a real human. That's it.
-        </p>
+        <h1 className="text-2xl md:text-3xl font-display font-bold tracking-tight">The Value Exchange</h1>
+        <p className="text-muted-foreground">Tell us who you are, and we'll verify you're a real human. That's it.</p>
       </div>
 
       {/* Form */}
-      <div className="space-y-5">
-        <div className="space-y-2">
-          <Label htmlFor="name" className="text-sm font-medium">
-            Full Name
-          </Label>
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <Input
-              id="name"
-              placeholder="Your full name"
-              value={user_name}
-              onChange={(e) => {
-                setUserName(e.target.value);
-                if (errors.name) setErrors({ ...errors, name: undefined });
-              }}
-              className="glass-input h-12 pl-11 text-base"
-            />
-          </div>
-          {errors.name && (
-            <p className="text-destructive text-sm">{errors.name}</p>
-          )}
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-medium">
-            Primary Email
-          </Label>
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <Input
-              id="email"
-              type="email"
-              placeholder="your@email.com"
-              value={user_email}
-              onChange={(e) => {
-                setUserEmail(e.target.value);
-                if (errors.email) setErrors({ ...errors, email: undefined });
-              }}
-              className="glass-input h-12 pl-11 text-base"
-            />
-          </div>
-          {errors.email && (
-            <p className="text-destructive text-sm">{errors.email}</p>
-          )}
-        </div>
-      </div>
+      <div className="space-y-5"></div>
 
       {/* Warning */}
       <div className="flex items-start gap-3 p-4 rounded-xl bg-golden/5 border border-golden/20">
         <AlertTriangle className="w-5 h-5 text-golden flex-shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground">
-          <span className="text-golden font-medium">Heads up:</span> Paid by Data works because brands pay to reach real people. Fake emails will fail verification.
+          <span className="text-golden font-medium">Heads up:</span> Paid by Data works because brands pay to reach real
+          people. Fake emails will fail verification.
         </p>
       </div>
 
       {/* CTA */}
-      <Button 
-        variant="hero" 
-        size="lg" 
+      <Button
+        variant="hero"
+        size="lg"
         className="w-full"
         onClick={handleSubmit}
         disabled={isLoading || !user_name.trim() || !user_email.trim()}
@@ -141,7 +86,7 @@ export const Step2LeadCapture = () => {
             Sending link...
           </>
         ) : (
-          'Verify Email & Continue'
+          "Verify Email & Continue"
         )}
       </Button>
     </div>

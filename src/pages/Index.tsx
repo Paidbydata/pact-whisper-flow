@@ -1,11 +1,11 @@
-import { useOnboardingStore } from '@/store/useOnboardingStore';
-import { WizardLayout } from '@/components/WizardLayout';
-import { Step1AlphaEntry } from '@/components/steps/Step1AlphaEntry';
-import { Step2LeadCapture } from '@/components/steps/Step2LeadCapture';
-import { Step3Verification } from '@/components/steps/Step3Verification';
-import { Step4Consent } from '@/components/steps/Step4Consent';
-import { Step5Upload } from '@/components/steps/Step5Upload';
-import { Step6Success } from '@/components/steps/Step6Success';
+import { useOnboardingStore } from "@/store/useOnboardingStore";
+import { WizardLayout } from "@/components/WizardLayout";
+import { Step1AlphaEntry } from "@/components/steps/Step1AlphaEntry";
+import { Step2LeadCapture } from "@/components/steps/Step2LeadCapture";
+import { Step3Verification } from "@/components/steps/Step3Verification";
+import { Step4Consent } from "@/components/steps/Step4Consent";
+import { Step5Upload } from "@/components/steps/Step5Upload";
+import { Step6Success } from "@/components/steps/Step6Success";
 
 const Index = () => {
   const { currentStep } = useOnboardingStore();
@@ -29,11 +29,7 @@ const Index = () => {
     }
   };
 
-  return (
-    <WizardLayout>
-      {renderStep()}
-    </WizardLayout>
-  );
+  return <WizardLayout>{renderStep()}</WizardLayout>;
 };
 
 export default Index;
