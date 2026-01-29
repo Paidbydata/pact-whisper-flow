@@ -74,13 +74,7 @@ export const Step2LeadCapture = () => {
       </div>
 
       {/* CTA */}
-      <Button
-        variant="hero"
-        size="lg"
-        className="w-full"
-        onClick={handleSubmit}
-        disabled={isLoading || !user_name.trim() || !user_email.trim()}
-      >
+      <Button variant="hero" size="lg" className="w-full" onClick={handleSubmit} disabled={isLoading}>
         {isLoading ? (
           <>
             <Loader2 className="w-5 h-5 animate-spin" />
