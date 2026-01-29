@@ -9,7 +9,7 @@ interface WizardLayoutProps {
 const TOTAL_STEPS = 6;
 
 export const WizardLayout = ({ children }: WizardLayoutProps) => {
-  const { currentStep } = useOnboardingStore();
+  const { currentStep, setStep } = useOnboardingStore();
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -42,7 +42,7 @@ export const WizardLayout = ({ children }: WizardLayoutProps) => {
         <div className="flex items-center justify-center gap-2">
           {Array.from({ length: TOTAL_STEPS }).map((_, index) => {
             const stepNum = index + 1;
-            let className = 'step-indicator ';
+            let className = 'step-indicator cursor-pointer ';
             
             if (stepNum === currentStep) {
               className += 'step-indicator-active';
@@ -52,7 +52,14 @@ export const WizardLayout = ({ children }: WizardLayoutProps) => {
               className += 'step-indicator-pending';
             }
             
-            return <div key={stepNum} className={className} />;
+            return (
+              <button
+                key={stepNum}
+                className={className}
+                onClick={() => setStep(stepNum)}
+                aria-label={`Go to step ${stepNum}`}
+              />
+            );
           })}
         </div>
       </div>
