@@ -1,15 +1,11 @@
 import { useCallback, useState } from 'react';
 import { useOnboardingStore } from '@/store/useOnboardingStore';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowLeft, CloudUpload, File, Loader2, Shield, Trash2, X } from 'lucide-react';
+import { ArrowLeft, CloudUpload, File, Loader2, Trash2 } from 'lucide-react';
 
 export const Step5Upload = () => {
   const { 
-    uploaded_file_name,
-    privacy_masking_confirmed,
     setUploadedFile,
-    setPrivacyMaskingConfirmed,
     nextStep,
     prevStep 
   } = useOnboardingStore();
@@ -53,7 +49,7 @@ export const Step5Upload = () => {
   };
 
   const handleSubmit = async () => {
-    if (!localFile || !privacy_masking_confirmed) return;
+    if (!localFile) return;
     
     setIsSubmitting(true);
     
@@ -64,7 +60,7 @@ export const Step5Upload = () => {
     nextStep();
   };
 
-  const canSubmit = localFile && privacy_masking_confirmed;
+  const canSubmit = !!localFile;
 
   return (
     <div className="space-y-6 py-8">
@@ -147,31 +143,6 @@ export const Step5Upload = () => {
             </div>
           </div>
         )}
-      </div>
-
-      {/* Privacy Masking Reminder */}
-      <div className="glass-card rounded-xl p-4">
-        <div className="flex items-start gap-3">
-          <Shield className="w-5 h-5 text-golden flex-shrink-0 mt-0.5" />
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">
-              <span className="text-golden font-medium">Privacy tip:</span> Please mask any sensitive information like your bank balance or full card number before uploading.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Privacy Checkbox */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/20">
-        <Checkbox 
-          id="privacy-confirm"
-          checked={privacy_masking_confirmed}
-          onCheckedChange={(checked) => setPrivacyMaskingConfirmed(checked as boolean)}
-          className="mt-0.5"
-        />
-        <label htmlFor="privacy-confirm" className="text-sm text-muted-foreground cursor-pointer">
-          I confirm that I have masked or removed any sensitive financial information from my upload.
-        </label>
       </div>
 
       {/* Payout Note */}
