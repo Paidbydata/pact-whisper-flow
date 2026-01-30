@@ -79,13 +79,7 @@ Check it out: https://paidbydata.com/alpha`;
               <Snowflake className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <p 
-                className="text-sm font-medium"
-                style={{ 
-                  color: 'hsl(var(--muted-foreground))',
-                  textShadow: '0 1px 2px hsl(var(--background) / 0.5)'
-                }}
-              >
+              <p className="text-sm font-medium text-foreground/80">
                 Your Sponsor
               </p>
               <p className="text-xl font-display font-bold text-gradient-golden">Monk</p>
@@ -96,7 +90,7 @@ Check it out: https://paidbydata.com/alpha`;
 
           <div className="space-y-2">
             <p className="text-sm font-medium text-primary">Why Monk?</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-foreground/90 leading-relaxed font-normal">
               Monk supports people who train consistently. Strava is used by athletes who track effort and recovery—the
               exact people Monk builds ice baths for. They are a UK-based cold therapy brand focused on recovery and
               resilience.
@@ -114,7 +108,7 @@ Check it out: https://paidbydata.com/alpha`;
           </div>
           <span className="text-golden font-semibold">Pending Manual Review</span>
         </div>
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="text-sm text-foreground/90 mt-2">
           Our team is reviewing your proof. Upon approval, your reward link arrives via email from Tremendous.
         </p>
       </div>
@@ -125,10 +119,10 @@ Check it out: https://paidbydata.com/alpha`;
       {/* Feedback Section */}
       {!feedbackSubmitted ? (
         <div className="space-y-4">
-          <h2 className="text-lg font-display font-semibold">A quick question from your sponsor, Monk:</h2>
+          <h2 className="text-lg font-display font-semibold text-foreground">A quick question from your sponsor, Monk:</h2>
 
           {/* Sponsor Question */}
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-foreground/90 leading-relaxed">
             Have you ever considered investing in an ice bath to aid your recovery? Be honest—what's been the main thing on your mind when thinking about it?
           </p>
 
@@ -177,7 +171,7 @@ Check it out: https://paidbydata.com/alpha`;
           <h2 className="text-lg font-display font-semibold">Nominate a fellow architect.</h2>
         </div>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-foreground/90">
           We're building this for people who actually move. Since slots are strictly limited to 100, we'd rather give
           them to people you know. Give a friend priority access to Pilot 0.2.
         </p>

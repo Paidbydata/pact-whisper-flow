@@ -24,7 +24,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 280 40% 20%;
-    --muted-foreground: 280 20% 70%;
+    --muted-foreground: 0 0% 85%;
 
     /* Accent remains golden */
     --accent: 43 75% 52%;
@@ -81,10 +81,29 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 600;
+  }
+
+  /* Body text on dark backgrounds - slightly heavier for legibility */
+  p, span, label {
+    font-weight: 400;
+  }
+
+  /* Placeholder styling - visible but distinguishable */
+  ::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    opacity: 1;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    opacity: 1;
   }
 }
 
@@ -220,6 +239,21 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Text shadow for legibility over images */
+  .text-shadow-strong {
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .text-shadow-subtle {
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  /* High contrast text utilities */
+  .text-high-contrast {
+    color: #FFFFFF;
+    font-weight: 500;
   }
 
   .animate-pulse-slow {
