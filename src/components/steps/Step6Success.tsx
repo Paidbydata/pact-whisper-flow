@@ -125,31 +125,40 @@ Check it out: https://paidbydata.com/alpha`;
       {/* Feedback Section */}
       {!feedbackSubmitted ? (
         <div className="space-y-4">
-          <h2 className="text-lg font-display font-semibold">What do you think of Paid by Data?</h2>
+          <h2 className="text-lg font-display font-semibold">A quick question from your sponsor, Monk:</h2>
 
-          {/* Star Rating */}
-          <div className="star-rating justify-center">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <button key={star} onClick={() => setRating(star)} className="p-1">
-                <Star
-                  className={`w-8 h-8 transition-colors ${
-                    star <= rating ? "fill-golden text-golden" : "text-muted-foreground hover:text-golden/50"
-                  }`}
-                />
-              </button>
-            ))}
-          </div>
+          {/* Sponsor Question */}
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Have you ever considered investing in an ice bath to aid your recovery? Be honest—what's been the main thing on your mind when thinking about it?
+          </p>
 
           {/* Feedback Text */}
           <Textarea
-            placeholder="Be honest. We're architects building this together..."
+            placeholder="Share your thoughts on ice baths and recovery..."
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
-            className="glass-input min-h-[100px] resize-none"
+            maxLength={1000}
+            className="glass-input min-h-[120px] resize-none"
           />
 
-          <Button variant="glass" className="w-full" onClick={handleFeedbackSubmit} disabled={rating === 0}>
-            Submit Feedback
+          {/* Star Rating */}
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-center">How likely are you to check out Monk's recovery tech?</p>
+            <div className="star-rating justify-center">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button key={star} onClick={() => setRating(star)} className="p-1">
+                  <Star
+                    className={`w-8 h-8 transition-colors ${
+                      star <= rating ? "fill-golden text-golden" : "text-muted-foreground hover:text-golden/50"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <Button variant="glass" className="w-full" onClick={handleFeedbackSubmit} disabled={rating === 0 || feedback.trim() === ''}>
+            Submit to Monk
           </Button>
         </div>
       ) : (
