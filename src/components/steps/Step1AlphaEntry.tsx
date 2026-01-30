@@ -64,7 +64,19 @@ export const Step1AlphaEntry = () => {
         </h1>
         
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Welcome to the Paid by Data Alpha. We're testing a simple hypothesis: that brands should pay you directly for the right to know you.
+          Welcome to the Paid by Data Alpha.
+        </p>
+        
+        <p className="text-muted-foreground text-base leading-relaxed">
+          We're testing a simple idea: brands should pay you directly for access to your verified Strava subscription payment — with your explicit consent.
+        </p>
+        
+        <p className="text-muted-foreground text-base leading-relaxed">
+          For this pilot, participation is simple and limited.
+        </p>
+        
+        <p className="text-muted-foreground text-sm leading-relaxed italic">
+          We only analyse verified subscription or transaction data. Nothing else.
         </p>
       </div>
 
@@ -75,9 +87,9 @@ export const Step1AlphaEntry = () => {
             <Shield className="w-5 h-5 text-golden" />
           </div>
           <div>
-            <p className="font-medium text-foreground">Current Sponsorship</p>
-            <p className="text-muted-foreground text-sm">
-              A UK-based ice-bath company is sponsoring <span className="text-golden font-semibold">one month of Strava (£8.99)</span>
+            <p className="font-medium text-foreground">🔒 Current Sponsorship</p>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              A UK-based ice-bath company is sponsoring <span className="text-golden font-semibold">one month of Strava (£8.99)</span> in exchange for a one-time consent to share your Strava payment and basic contact details (name + email).
             </p>
           </div>
         </div>
@@ -85,7 +97,7 @@ export const Step1AlphaEntry = () => {
         <div className="h-px bg-border/50" />
         
         <p className="text-sm text-muted-foreground leading-relaxed">
-          This experiment is strictly limited to the first 100 verified participants. We're keeping the group small to ensure every "architect" of this exchange gets a manual review and a seamless payout.
+          Once verified, your Strava month is paid out within 7 days via <span className="font-medium text-foreground">Tremendous</span>, our trusted payout partner.
         </p>
       </div>
 
