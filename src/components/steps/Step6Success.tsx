@@ -54,14 +54,15 @@ Check it out: https://paidbydata.com/alpha`;
 
       {/* Sponsor Reveal Card */}
       <div className="glass-card rounded-2xl overflow-hidden glow-effect">
-        {/* Ice Bath Image */}
+        {/* Ice Bath Image - crisp, no blur */}
         <div className="relative w-full aspect-[4/3] md:aspect-[4/3]">
           <img
             src={monkIceBath}
             alt="Monk Ice Bath - Premium cold therapy equipment"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+          {/* Subtle gradient on bottom 30% only for text legibility */}
+          <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-card to-transparent" />
         </div>
 
         {/* Card Content */}
