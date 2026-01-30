@@ -53,26 +53,41 @@ Check it out: https://paidbydata.com/alpha`;
       </div>
 
       {/* Sponsor Reveal Card */}
-      <div className="glass-card rounded-2xl overflow-hidden glow-effect">
-        {/* Ice Bath Image - crisp, no blur */}
-        <div className="relative w-full aspect-[4/3] md:aspect-[4/3]">
+      <div className="rounded-2xl overflow-hidden border border-border/50 bg-card">
+        {/* Ice Bath Image - crystal clear, no filters */}
+        <div className="relative w-full aspect-[4/3]">
           <img
             src={monkIceBath}
             alt="Monk Ice Bath - Premium cold therapy equipment"
             className="w-full h-full object-cover object-center"
+            style={{
+              imageRendering: 'auto',
+              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden',
+              transform: 'translateZ(0)',
+            }}
           />
-          {/* Subtle gradient on bottom 30% only for text legibility */}
-          <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-card to-transparent" />
         </div>
 
-        {/* Card Content */}
-        <div className="p-6 space-y-4 -mt-12 relative z-10">
+        {/* Card Content - clean separation, no overlay on image */}
+        <div className="p-6 space-y-4 bg-card">
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-xl bg-primary/20 backdrop-blur-sm border border-primary/30">
+            <div 
+              className="p-3 rounded-xl border border-primary/40"
+              style={{ background: 'hsl(var(--primary) / 0.15)' }}
+            >
               <Snowflake className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Your Sponsor</p>
+              <p 
+                className="text-sm font-medium"
+                style={{ 
+                  color: 'hsl(var(--muted-foreground))',
+                  textShadow: '0 1px 2px hsl(var(--background) / 0.5)'
+                }}
+              >
+                Your Sponsor
+              </p>
               <p className="text-xl font-display font-bold text-gradient-golden">Monk</p>
             </div>
           </div>
